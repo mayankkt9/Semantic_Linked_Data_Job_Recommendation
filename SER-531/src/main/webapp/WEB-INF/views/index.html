@@ -1,0 +1,340 @@
+<html>
+
+<link href='https://fonts.googleapis.com/css?family=Verdana' rel='stylesheet'>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Verdana' rel='stylesheet'>
+<link href='css/login.css' rel='stylesheet'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+<style>
+    html {
+     height: 100%;
+     } 
+     table {
+  font-family: Verdana;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+     body {font-family: Arial, Helvetica, sans-serif;background: url("images/back1.jpg");}
+
+     /* LOGIN FORM START*/  
+
+     label{
+         font-size: 20px;
+     }
+     input[type=text]{
+     width: 15%;
+     padding: 12px 20px;
+     margin: 8px 0;
+     display: inline-block;
+     border: 1px solid #ccc;
+     box-sizing: border-box;
+     border-radius: 5px;
+     font-size: 16px;
+     }
+     button {
+     background-color: #4CAF50;
+     color: white;
+     padding: 14px 20px;
+     margin: 8px 0;
+     border: none;
+     font-size: 25px;
+     cursor: pointer;
+     width: 100%;
+     }
+     button:hover {
+     opacity: 0.8;
+     }
+     .container {
+     padding: 16px;
+
+     width: 50%;
+     }
+     span.psw {
+     float: right;
+     padding-top: 16px;
+     }
+     .loginWrapper{
+     float:right;
+     width: 50%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 90%;
+     }
+    
+     #errorMessage{
+     height:50px;
+     color: red;
+     font-family: 'Verdana';
+     }
+      /* LOGIN FORM END*/ 
+
+     /* BOOK ANIMATION START*/ 
+    .bookWrapper{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        height: 100%;
+        float:left;
+    }
+
+     .book {
+     perspective: 100em;
+     width: 100%;
+     height: 50%;
+     display: flex;
+     justify-content: center;
+     }
+     .cover {
+     top: 0.25rem;
+     left: 15.25rem;
+     background-color: #36354e;
+     transform: rotateY(0deg);
+     width: 25%;
+     height: 75%;
+     }
+     .page {
+     top: 0.25rem;
+     left: 15.25rem;
+     background-color: #e9e6c4;
+     transform: rotateY(0deg);
+     width: 25%;
+     height: 75%;
+     text-align: right;
+     font-size: 8px;
+     color: #777;
+     font-family: monospace;
+     }
+     .page::before{
+     display: block;
+     border-top: 1px dashed rgba(0, 0, 0, 0.3);
+     content: "Evalu8";
+     height: 50px;
+     width: 100px;
+     font-size: 25px;
+     margin-top:1px solid gray;
+     padding-bottom: 1rem;
+     }
+     .page::after {
+     display: block;
+     border-top: 1px dashed rgba(0, 0, 0, 0.3);
+     content: "Kinectic Learning";
+     height: 50px;
+     width: 100px;
+     font-size: 25px;
+     margin-top:1px solid gray;
+     padding-bottom: 1rem;
+     }
+     .cover, .page {
+     position: absolute;
+     padding: 1rem;
+     transform-origin: 100% 0;
+     border-radius: 5px 0 0 5px;
+     box-shadow: inset 3px 0px 20px rgba(0, 0, 0, 0.2),
+     0px 0px 15px rgba(0, 0, 0, 0.1);
+     box-sizing: border-box;
+     }
+     .cover.turn {
+     animation: bookCover 3s forwards;
+     }
+     .page.turn {
+     animation: bookOpen 3s forwards;
+     }
+     .page:nth-of-type(1) {
+     animation-delay: 0.05s;
+     }
+     .page:nth-of-type(2) {
+     animation-delay: 0.33s
+     }
+     .page:nth-of-type(3) {
+     animation-delay: 0.66s;
+     }
+     .page:nth-of-type(4) {
+     animation: bookOpen150deg 3s forwards;
+     animation-delay: 0.99s;
+     }
+     .page:nth-of-type(5) {
+     animation: bookOpen30deg 3s forwards;
+     animation-delay: 1.2s;
+     }
+     .page:nth-of-type(6) {
+     animation: bookOpen55deg 3s forwards;
+     animation-delay: 1.25s;
+     }
+     @keyframes bookOpen {
+     30% { z-index: 999 }
+     100% {  transform: rotateY(180deg);
+     z-index: 999;}
+     }
+     @keyframes bookCover {
+     30% { z-index: 999 }
+     100% {  transform: rotateY(180deg);
+     z-index: 1;}
+     }
+     @keyframes bookOpen150deg {
+     30% { z-index: 999 }
+     100% {  transform: rotateY(150deg);
+     z-index: 999;}
+     }
+     @keyframes bookOpen55deg {
+     30% { z-index: 999 }
+     100% {  transform: rotateY(55deg);
+     z-index: 999;}
+     }
+     @keyframes bookOpen30deg {
+     50% { z-index: 999 }
+     100% {  transform: rotateY(30deg);
+     z-index: 999;}
+     }
+
+     label{
+        display: flex;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    color:black;
+     }
+     /* BOOK ANIMATION END*/ 
+
+</style>
+
+
+
+   
+
+        <div>
+            <div class="container" id="parent" style="display: flex;flex-direction: row;flex-wrap: wrap;width: 100%;">
+                <label for="userName"><b>Title</b></label>
+                <input type="text" placeholder="Enter Title" id="title" required>
+                <label for="dob"><b>City</b></label>
+                <input type="text" placeholder="Tempe" id="cityName" required>
+
+                <label for="dob"><b>Posted By</b></label>
+                <input type="text" placeholder="Amazon" id="postedBy" required>
+
+                <label for="dob"><b>postingDate</b></label>
+                <input type="text" placeholder="24/11/2019" id="postingDate" required>
+
+                <label for="dob"><b>applicationDeadline</b></label>
+                <input type="text" placeholder="24/11/2019" id="appdeadline" required>
+                <label for="dob"><b>department</b></label>
+                <input type="text" placeholder="Computer Science" id="department" required>
+
+                <label for="dob"><b>specializationReq</b></label>
+                <input type="text" placeholder="Computer Science" id="specialzationRequirement" required>
+                <label for="dob"><b>jobSalary</b></label>
+                <input type="text" placeholder="Tempe" id="jobSalary" required>
+                <label for="dob"><b>graduateLevelReq</b></label>
+                <input type="text" placeholder="Tempe" id="graduateLevelReq" required>
+                <label for="dob"><b>skillName</b></label>
+                <input type="text" placeholder="Tempe" id="skillName" required>
+
+
+
+
+                <button onclick="validateSubmit()">SUBMIT</button>
+       
+            </div>
+        </div>
+
+        <table id="excelDataTable">
+            </table>
+
+        <script>
+
+function validateSubmit(){
+  
+    children = document.getElementById("parent").childNodes;
+    json ={};
+    for( i=0; i<children.length; i++){
+         
+        if(children[i].nodeName != "#text" && children[i].nodeName != "LABEL"){
+         
+               if(children[i].value.length > 0){
+                   console.log(children[i].value);
+                   console.log(children[i].getAttribute("id"));
+                   json[children[i].getAttribute("id")] = children[i].value;
+               }
+           }
+    }
+    console.log(json);
+    document.getElementById("excelDataTable").innerHTML=" ";
+    buildHtmlTable('#excelDataTable', json);  
+
+}
+
+                function buildHtmlTable(selector,json) {
+                
+                    $.ajax({
+                        url: "http://localhost:8000/spring/sparql/"+JSON.stringify(json),
+                
+                        success: function (result) {
+                            console.log(result);
+                            myList = JSON.parse(result);
+                            var columns = addAllColumnHeaders(myList, selector);
+                
+                for (var i = 0; i < myList.length; i++) {
+                  var row$ = $('<tr/>');
+                  for (var colIndex = 0; colIndex < columns.length; colIndex++) {
+                    var cellValue = myList[i][columns[colIndex]];
+                    if (cellValue == null) cellValue = "";
+                    row$.append($('<td/>').html(cellValue));
+                  }
+                  $(selector).append(row$);
+                }
+                
+                        },
+                        error: function (result) {
+                        }
+                
+                    });
+                
+                
+                
+                
+                }
+                
+                // Adds a header row to the table and returns the set of columns.
+                // Need to do union of keys from all records as some records may not contain
+                // all records.
+                function addAllColumnHeaders(myList, selector) {
+                  var columnSet = [];
+                  var headerTr$ = $('<tr/>');
+                
+                  for (var i = 0; i < myList.length; i++) {
+                    var rowHash = myList[i];
+                    for (var key in rowHash) {
+                      if ($.inArray(key, columnSet) == -1) {
+                        columnSet.push(key);
+                        headerTr$.append($('<th/>').html(key));
+                      }
+                    }
+                  }
+                  $(selector).append(headerTr$);
+                
+                  return columnSet;
+                }
+                
+                  
+                
+                
+                </script>
+
+
+
+</html>

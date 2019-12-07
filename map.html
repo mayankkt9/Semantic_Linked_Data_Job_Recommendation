@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style>
+      #query {
+      #height: 500px;
+        border-top-style: dotted;
+  border-right-style: solid;
+  border-bottom-style: dotted;
+  border-left-style: solid;
+    }
+    #map {
+      height: 800px;
+      width: 800px
+        border-top-style: dotted;
+  border-right-style: solid;
+  border-bottom-style: dotted;
+  border-left-style: solid;
+    }
+    html, body {
+      height: 600px;
+      margin: 0;
+      padding: 0;
+    }	
+  </style>
+</head>
+<body>
+  <div id="query" style="border:thin"></div>
+  <div id="map" style="border:thin"></div>
+  <script>
+    let map;
+// global array to store the marker object 
+let markersArray = [];
+
+
+
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 38, lng: -97},
+    zoom: 5
+  });
+  
+  
+  
+  
+
+  
+  
+  var myArray = JSON.parse(localStorage.getItem('key'));
+  
+  latlongMarker(myArray);
+}
+
+
+
+function latlongMarker(latLong){
+	console.log(latLong)
+	for(var i = 0; i < latLong.length; i++) {
+    var obj = latLong[i];
+    //addMarker({lat: obj.latitude, lng: obj.longitude}, "yellow");
+    var latLng = new google.maps.LatLng(latLong[i].Latitude,latLong[i].Longitude);
+    console.log('print - '+latLong[i].Latitude);
+    var marker = new google.maps.Marker({
+            position: latLng,
+            map: map
+          });
+	}
+  // addMarker({lat: -34.297, lng: 150.544}, "yellow");
+//   addMarker({lat: -34.397, lng: 150.644}, "green");
+//   addMarker({lat: -34.597, lng: 150.844}, "blue");
+
+}
+
+function addMarker(latLng, color) {
+  let url = "http://maps.google.com/mapfiles/ms/icons/";
+  url += color + "-dot.png";
+
+  let marker = new google.maps.Marker({
+    map: map,
+    position: latLng,
+    icon: {
+      url: url
+    }
+  });
+
+  //store the marker object drawn in global array
+  markersArray.push(marker);
+}
+    
+  </script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5SX8pXyAFAx38bdqquRBEa4NqjePjY0M&callback=initMap">
+  </script>
+</body>
+</html>

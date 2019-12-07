@@ -1,0 +1,532 @@
+<html>
+
+<link href='https://fonts.googleapis.com/css?family=Verdana' rel='stylesheet'>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Verdana' rel='stylesheet'>
+<link href='css/login.css' rel='stylesheet'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+<style>
+    html {
+     height: 100%;
+     } 
+     table {
+  font-family: Verdana;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+     body {font-family: Arial, Helvetica, sans-serif;background: url("images/back1.jpg");}
+
+     /* LOGIN FORM START*/  
+
+     label{
+         font-size: 20px;
+     }
+     input[type=text]{
+     width: 150px;
+     padding: 12px 20px;
+     margin: 8px 0;
+     display: inline-block;
+     border: 1px solid #ccc;
+     box-sizing: border-box;
+     border-radius: 5px;
+     font-size: 16px;
+     }
+     
+     button {
+     background-color: #4CAF50;
+     color: white;
+     padding: 14px 20px;
+     margin: 8px 0;
+     border: none;
+     font-size: 25px;
+     cursor: pointer;
+     width: 100%;
+     }
+     button:hover {
+     opacity: 0.8;
+     }
+     .container {
+     padding: 16px;
+
+     width: 50%;
+     }
+     span.psw {
+     float: right;
+     padding-top: 16px;
+     }
+     .loginWrapper{
+     float:right;
+     width: 50%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 90%;
+     }
+    
+     #errorMessage{
+     height:50px;
+     color: red;
+     font-family: 'Verdana';
+     }
+      /* LOGIN FORM END*/ 
+
+	.buttonload {
+  background-color: #4CAF50; /* Green background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 16px; /* Some padding */
+  font-size: 16px /* Set a font size */
+}
+     /* BOOK ANIMATION START*/ 
+    .bookWrapper{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        height: 100%;
+        float:left;
+    }
+
+	 .loader_div{
+  position: absolute;
+  top: 0;
+  bottom: 0%;
+  left: 0;
+  right: 0%;
+  z-index: 99;
+  opacity:0.7;
+  display:none;
+  background: lightgrey url('../../../images/youloadergif.gif') center center no-repeat;
+} 
+
+     .book {
+     perspective: 100em;
+     width: 100%;
+     height: 50%;
+     display: flex;
+     justify-content: center;
+     }
+     .cover {
+     top: 0.25rem;
+     left: 15.25rem;
+     background-color: #36354e;
+     transform: rotateY(0deg);
+     width: 25%;
+     height: 75%;
+     }
+     .page {
+     top: 0.25rem;
+     left: 15.25rem;
+     background-color: #e9e6c4;
+     transform: rotateY(0deg);
+     width: 25%;
+     height: 75%;
+     text-align: right;
+     font-size: 8px;
+     color: #777;
+     font-family: monospace;
+     }
+     .page::before{
+     display: block;
+     border-top: 1px dashed rgba(0, 0, 0, 0.3);
+     content: "Evalu8";
+     height: 50px;
+     width: 100px;
+     font-size: 25px;
+     margin-top:1px solid gray;
+     padding-bottom: 1rem;
+     }
+     .page::after {
+     display: block;
+     border-top: 1px dashed rgba(0, 0, 0, 0.3);
+     content: "Kinectic Learning";
+     height: 50px;
+     width: 100px;
+     font-size: 25px;
+     margin-top:1px solid gray;
+     padding-bottom: 1rem;
+     }
+     .cover, .page {
+     position: absolute;
+     padding: 1rem;
+     transform-origin: 100% 0;
+     border-radius: 5px 0 0 5px;
+     box-shadow: inset 3px 0px 20px rgba(0, 0, 0, 0.2),
+     0px 0px 15px rgba(0, 0, 0, 0.1);
+     box-sizing: border-box;
+     }
+     .cover.turn {
+     animation: bookCover 3s forwards;
+     }
+     .page.turn {
+     animation: bookOpen 3s forwards;
+     }
+     .page:nth-of-type(1) {
+     animation-delay: 0.05s;
+     }
+     .page:nth-of-type(2) {
+     animation-delay: 0.33s
+     }
+     .page:nth-of-type(3) {
+     animation-delay: 0.66s;
+     }
+     .page:nth-of-type(4) {
+     animation: bookOpen150deg 3s forwards;
+     animation-delay: 0.99s;
+     }
+     .page:nth-of-type(5) {
+     animation: bookOpen30deg 3s forwards;
+     animation-delay: 1.2s;
+     }
+     .page:nth-of-type(6) {
+     animation: bookOpen55deg 3s forwards;
+     animation-delay: 1.25s;
+     }
+     @keyframes bookOpen {
+     30% { z-index: 999 }
+     100% {  transform: rotateY(180deg);
+     z-index: 999;}
+     }
+     @keyframes bookCover {
+     30% { z-index: 999 }
+     100% {  transform: rotateY(180deg);
+     z-index: 1;}
+     }
+     @keyframes bookOpen150deg {
+     30% { z-index: 999 }
+     100% {  transform: rotateY(150deg);
+     z-index: 999;}
+     }
+     @keyframes bookOpen55deg {
+     30% { z-index: 999 }
+     100% {  transform: rotateY(55deg);
+     z-index: 999;}
+     }
+     @keyframes bookOpen30deg {
+     50% { z-index: 999 }
+     100% {  transform: rotateY(30deg);
+     z-index: 999;}
+     }
+
+     label{
+        display: flex;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    color:black;
+     }
+     /* BOOK ANIMATION END*/ 
+
+</style>
+
+
+
+      <div style="display: flex;align-items: center;justify-content: center;padding: 10px;cursor: pointer;text-align: center;margin-bottom: 10px;" onclick = "displayCompanies()" id="recruiters">
+            <span style="font-size: 25px;font-weight: bold;font-family: Verdana, Geneva, Tahoma, sans-serif;color: white;background: lightblue;padding: 10px;">APPLICANTS - ( I CAN SEE ALL JOBS)</span>
+      </div>
+
+      <div style="display: flex;align-items: center;justify-content: center;padding: 10px;cursor: pointer;text-align: center" id="applicants" onclick = "displayJobs()">
+          <span style="font-size: 25px;font-weight: bold;font-family: Verdana, Geneva, Tahoma, sans-serif;color: white;background: lightblue;padding: 10px;">RECRUITERS - ( I CAN SEE ALL CANDIDATES)</span>
+    </div>
+
+
+
+    <div style="display: flex;align-items: center;justify-content: center;padding: 10px;cursor: pointer;" id="back" onclick = "back()">
+        <span style="font-size: 25px;font-weight: bold;font-family: Verdana, Geneva, Tahoma, sans-serif;color: white;background: lightblue;padding: 10px;">BACK</span>
+  </div>
+
+
+        <div>
+
+          <div class="left" style="float: left;width: 100%" id="left">
+            
+            <div class="left-container" id="parent-left" style="display: flex;flex-direction: row;flex-wrap: wrap;width: 100%;">
+                <label for="userName"><b>Title</b></label>
+                <input type="text" placeholder="Enter Title" id="title" required>
+
+                <label for="dob"><b>City</b></label>
+                <input type="text" placeholder="Tempe" id="cityName" required>
+
+                <label for="dob"><b>Posted By</b></label>
+                <input type="text" placeholder="Amazon" id="postedBy" required>
+
+                <label for="dob"><b>postingDate</b></label>
+                <input type="text" placeholder="24/11/2019" id="postingDate" required>
+
+                <label for="dob"><b>applicationDeadline</b></label>
+                <input type="text" placeholder="24/11/2019" id="appdeadline" required>
+
+                <label for="dob"><b>department</b></label>
+                <input type="text" placeholder="Computer Science" id="department" required>
+
+                <label for="dob"><b>specializationReq</b></label>
+                <input type="text" placeholder="Computer Science" id="specialzationRequirement" required>
+
+                <label for="dob"><b>Minimum Salary</b></label>
+                <input type="text" placeholder="100000" id="jobSalary" required>
+
+                <label for="dob"><b>graduateLevelReq</b></label>
+                <input type="text" placeholder="PHD/MASTER/BACHELOR" id="graduateLevelReq" required>
+
+                <label for="dob"><b>skillName</b></label>
+                <input type="text" placeholder="excel,english" id="skillName" required>
+               
+       
+            </div>
+          </div>
+          <div calss="right" style="width: 100%;" id="right">
+
+              <div class="rght-container" id="parent-right" style="display: flex;flex-direction: row;flex-wrap: wrap;width: 100%;">
+
+
+                  
+                  <label for="dob"><b>Name</b></label>
+                  <input type="text" placeholder="Nachiappan" id="applicantName" required>
+
+                  <label for="userName"><b>Email</b></label>
+                  <input type="text" placeholder="Enter email" id="email" required>
+
+                  <label for="dob"><b>gender</b></label>
+                  <input type="text" placeholder="M" id="gender" required>
+
+                  <label for="dob"><b>expectedGraduationDate</b></label>
+                  <input type="text" placeholder="12-01-01" id="expectedGraduationDate" required>
+  
+                  <label for="dob"><b>Max Expected Salary</b></label>
+                  <input type="text" placeholder="50000" id="expectedSalary" required>
+  
+              
+  
+                  <label for="dob"><b>livesIn</b></label>
+                  <input type="text" placeholder="Tempe" id="livesIn" required>
+  
+                  <label for="dob"><b>major</b></label>
+                  <input type="text" placeholder="Computer Science" id="major" required>
+
+                  <label for="dob"><b>University</b></label>
+                  <input type="text" placeholder="ASU" id="university" required>
+
+
+                  <label for="dob"><b>schoolLevel</b></label>
+                  <input type="text" placeholder="Masters" id="schoolLevel" required>
+
+
+                  <label for="dob"><b>specialization</b></label>
+                  <input type="text" placeholder="AI" id="specialization" required>
+
+                  <label for="hasSkills"><b>Skills</b></label>
+                  <input type="text" placeholder="Enter skill set in comma separated values" id="skills" required>
+                
+         
+              </div>
+          </div>
+          <button id="submit" onclick="validateSubmit()" >SUBMIT</button>
+          <div id="loader_div" class="loader_div"></div>
+          <button id="showMapBtn" onclick="showMap()">MAP</button>
+          
+          
+
+
+        </div>
+
+        <table id="excelDataTable">
+        </table>
+
+        <script>
+
+back();
+
+function showMap(){
+	window.location.href="map.html";
+}
+
+
+function back(){
+  document.getElementById("back").style.display = "none";
+document.getElementById("left").style.display = "none";
+document.getElementById("right").style.display = "none";
+document.getElementById("submit").style.display = "none";
+document.getElementById("showMapBtn").style.display = "none";
+document.getElementById("applicants").style.display = "block";
+  document.getElementById("recruiters").style.display = "block";
+parentLeft = false;
+parentRight = false;
+}
+
+function displayCompanies(){
+  document.getElementById("back").style.display = "block";
+  document.getElementById("left").style.display = "block";
+  document.getElementById("right").style.display = "none";
+  document.getElementById("submit").style.display = "block";
+  document.getElementById("showMapBtn").style.display = "block";
+  document.getElementById("applicants").style.display = "none";
+  document.getElementById("recruiters").style.display = "block";
+
+  parentLeft = true;
+parentRight = false;
+  
+
+}
+
+
+function displayJobs(){
+  document.getElementById("back").style.display = "block";
+  document.getElementById("left").style.display = "none";
+  document.getElementById("right").style.display = "block";
+  document.getElementById("submit").style.display = "block";
+  document.getElementById("showMapBtn").style.display = "block";
+  document.getElementById("applicants").style.display = "block"; 
+  document.getElementById("recruiters").style.display = "none";
+
+  parentLeft = false;
+parentRight = true;
+  
+
+}
+
+
+function validateSubmit(){
+    host= "http://localhost:8080/spring/sparql/";
+	jQuery(".loader_div").show();
+
+    if(parentLeft){
+    children = document.getElementById("parent-left").childNodes;
+    }
+    else{
+      host = "http://localhost:8080/spring/applicants/";
+      children = document.getElementById("parent-right").childNodes;
+    }
+    console.log("Children")
+    console.log(children)
+    json ={};
+    for( i=0; i<children.length; i++){
+         
+        if(children[i].nodeName != "#text" && children[i].nodeName != "LABEL"){
+         
+               if(children[i].value.length > 0){
+                   console.log(children[i].value);
+                   console.log(children[i].getAttribute("id"));
+                   json[children[i].getAttribute("id")] = children[i].value;
+               }
+           }
+    }
+    console.log(json);
+    document.getElementById("excelDataTable").innerHTML=" ";
+    
+    buildHtmlTable('#excelDataTable', json);  
+    jQuery(".loader_div").hide();
+    
+
+}
+
+                function buildHtmlTable(selector,json) {
+                
+                	var mapTable = []
+                    $.ajax({
+                        url: host+JSON.stringify(json),
+                
+                        success: function (result) {
+                            console.log(result);
+                            myList = JSON.parse(result);
+                            console.log("myList")
+                            console.log(myList)
+                            var columns = addAllColumnHeaders(myList, selector);
+                            //console.log("Hey")
+                			//console.log(latindex)
+                			//console.log(longindex)
+                for (var i = 0; i < myList.length; i++) {
+                  var row$ = $('<tr/>');
+                  for (var colIndex = 0; colIndex < columns.length; colIndex++) {
+                    var cellValue = myList[i][columns[colIndex]];
+                    if (cellValue == null) cellValue = "";
+                    row$.append($('<td/>').html(cellValue));
+                  }
+                  $(selector).append(row$);
+                }
+                
+                console.log("Whatsapp");
+                var accounting = [];
+                myList.forEach(function(item){
+  					//console.log('Lat: ' + item.latitude);
+					//console.log('Long: ' + item.longitude);
+					accounting.push({ 
+        				"Latitude" : item.latitude,
+        				"Longitude"  : item.longitude,
+    					});
+					});
+					
+					console.log(accounting)
+    				//sessionStorage.setItem('myArray', accounting);
+    				localStorage.setItem('key', JSON.stringify(accounting));
+    //             for (var key in myList) {
+// 					if (json.hasOwnProperty(key)) {
+//   						console.log("Whatsapp");
+//   						console.log(json[key].latitude);
+// 					}
+// 				}
+                
+                        },
+                        error: function (result) {
+                        }
+                
+                    });
+                
+                
+                
+                
+                }
+                
+                // Adds a header row to the table and returns the set of columns.
+                // Need to do union of keys from all records as some records may not contain
+                // all records.
+                var latindex=0;
+                var longindex=0;
+                function addAllColumnHeaders(myList, selector) {
+                
+                  var columnSet = [];
+                  var headerTr$ = $('<tr/>');
+                
+                  for (var i = 0; i < myList.length; i++) {
+                    var rowHash = myList[i];
+                    inc=0;
+                    for (var key in rowHash) {
+                
+                    if(key=="latitude")
+                    	latindex=inc
+                    if(key=="longitude")
+                    	longindex=inc
+                    inc=inc+1;
+                      if ($.inArray(key, columnSet) == -1) {
+                        columnSet.push(key);
+                        //console.log(key)
+                        headerTr$.append($('<th/>').html(key));
+                      }
+                    }
+                  }
+                  $(selector).append(headerTr$);
+                
+                  return columnSet;
+                }
+                
+                  
+                
+                
+                </script>
+
+
+
+</html>
